@@ -1,0 +1,51 @@
+package vect;
+
+public class TestVector3d {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Vector3D vector1 = new Vector3D(2, 3, 4);
+		Vector3D vector2 = new Vector3D(5, 6, 7);
+		Vector3D vector3 = new Vector3D(3, 4, 12);
+
+		Vector3D result = null;
+
+		result = vector1.addVector(vector2);
+		double x = result.getX();
+		double y = result.getY();
+		double z = result.getZ();
+
+		if (x == 7 && y == 9 && z == 11) {
+			System.out.println("Method addVector is true");
+		} else {
+			System.out.println("Method addVector is failed");
+		}
+
+		result = vector1.multiplyVector(vector2);
+		double x1 = result.getX();
+		double y1 = result.getY();
+		double z1 = result.getZ();
+		
+		if (x1 == -3 && y1 == 6 && z1 == -3) {
+			System.out.println("Method multiplyVector is true");
+		} else {
+			System.out.println("Method multiplyVecto is failed");
+		}
+
+		double module = vector3.calcModule();
+		if (module == 13) {
+			System.out.println("Method calcModule is true");
+		} else {
+			System.out.println("Method calcModule  is failed");
+		}
+
+		double scalar = vector1.calcScalar(vector2);
+		if (scalar == 56) {
+			System.out.println("Method calcModule is true");
+		} else {
+			System.out.println("Method calcModule  is failed");
+		}
+		
+	}
+
+}
