@@ -1,0 +1,68 @@
+package fs;
+
+public class FrequencyOfOccurrence {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		double frequence = 0;
+		double percent = 0;
+		int count = 0;
+
+		String text = "Золотые рыбки " + "в природе становятся всеядными, "
+				+ "и их привычки питания могут стать разрушительными. "
+				+ "Они снижают качество воды, взбалтывая осадочные породы "
+				+ "на дне реки, выкапывают растения и поедают все, что сочтут "
+				+ "подходящим. включая яйца рыб-аборигенов.Более того, золотые рыбки "
+				+ "соревнуются за пространство и ресурсы с местными видами и распространяют "
+				+ "болезни. А самый поразительный факт — огромные размеры, которых милые "
+				+ "золотые рыбки достигают в природе, и их способность путешествовать на "
+				+ "длинные расстояния. Одна особь, которую нашли ученые, весила 1,9 кг и "
+				+ "по размеру равнялась футбольному мячу, другая проделала марафон длиной "
+				+ "230 км за год. Как убрать золотых рыбок из рек? Методы включают в себя "
+				+ "отлов сетями и электролов рыбы, но вместе с инвазивными видами " 
+				+ "пострадают и местные. Лучше всего — просто не выпускать "
+				+ "аквариумных рыбок на свободу";
+
+		String lowerText = text.toLowerCase(); // replace caps
+		text = lowerText.replace(" ", ""); // remove space
+		char[] arrayText = text.toCharArray(); // from string to char array
+		double len = arrayText.length;
+
+		char[] arrayRepeatChar = new char[arrayText.length];
+
+		System.out.print("SYMBOL     " + "FREQUENCE OF OCCURRENCE     " 
+		+ "PERCENTAGE RATIO" + '\n');
+
+		Label: for (int i = 0; i < arrayText.length; i++) {
+			count = 0;
+			frequence = 0;
+			arrayRepeatChar[i] = arrayText[i];
+
+			for (int j = i; j < arrayText.length; j++) {
+
+				if (arrayText[i] == arrayText[j]) {
+					frequence++;
+				}
+			}
+
+			for (int x = 0; x < arrayRepeatChar.length; x++) {
+				if (arrayText[i] == arrayRepeatChar[x]) {
+					count++;
+					if (count > 1) {
+						continue Label;
+					}
+
+				}
+
+			}
+			percent = frequence * 100 / len;
+
+			String str = null;
+			str = String.format("%1$1.3f", percent);
+
+			System.out.println(arrayText[i] + "            " + (int) frequence + "                         " + str);
+
+		}
+	}
+
+}
