@@ -1,0 +1,24 @@
+package sw;
+
+public class SameWords {
+
+	public static void main(String[] args) {
+		int numberOfSameWords = 0;
+		String first = "Hello my world and you our friends";
+		String second = "Hello or goodbye my world and her friends you";
+		String[] arFirst = first.split(" ");
+		String[] arSecond = second.split(" ");
+		for (int i = 0; i < arFirst.length; i++) {
+			for (int j = 0; j < arSecond.length; j++) {
+
+				if (arFirst[i].equals(arSecond[j])) {
+					numberOfSameWords++;
+				}
+			}
+
+		}
+		System.out.println("Number of the same words  " + numberOfSameWords);
+
+	}
+
+}
