@@ -1,0 +1,64 @@
+package easter;
+
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+
+public class Easter {
+
+	LocalDate calcDayOfEaster(int year) {
+		LocalDate result = null;
+		LocalDate start = LocalDate.of(year, 03, 22);
+
+		int a = year % 19;
+		int b = year % 4;
+		int c = year % 7;
+		int d = (19 * a + 15) % 30;
+		int e = (2 * b + 4 * c + 6 * d + 6) % 7;
+		int f = d + e;
+
+		if (f <= 9) {
+			result = start.plusDays(f + 13);
+
+		} else {
+			if (f > 30) {
+				start = LocalDate.of(year, 05, f - 30);
+			} else {
+				start = LocalDate.of(year, 04, f);
+			}
+
+			result = start.plusDays(4);
+
+		}
+
+		return result;
+	}
+
+	
+	
+	public static void main(String[] args) {
+
+		Easter east = new Easter();
+		int years = 2010;
+		LocalDate easter = null;
+		LocalDate trinity = null;
+		String txtEaster = null;
+		String txtTrinity = null;
+
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd MMMM yyyy");
+
+		System.out.println("DATE OF EASTER          DATE OF TRINITY");
+
+		while (years <= 2020) {
+
+			easter = east.calcDayOfEaster(years);
+			trinity = easter.plusDays(49);
+			txtEaster = easter.format(formatter);
+			txtTrinity = trinity.format(formatter);
+			System.out.println(txtEaster + "          " + txtTrinity);
+
+			years++;
+
+		}
+	}
+
+}
